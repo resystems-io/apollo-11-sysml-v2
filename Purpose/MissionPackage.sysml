@@ -57,7 +57,7 @@ package MissionPackage {
 			doc /* Deployment of a television camera to transmit signals to Earth; and deployment of a solar wind composition experiment, seismic experiment package and a Laser Ranging Retroreflector. */
 		} :> goals;
 
-		exhibit state apollo11Phases {
+		exhibit state apollo11Phases :>> phases {
 
 			// Declare the states used in this specific state machine
 			state initial : Initial;
@@ -182,7 +182,7 @@ package MissionPackage {
 					*/
 			}
 
-		} :>> phases;
+		}
 
 		part programmaticAndPublicAffairsManagement:ProgrammaticAndPublicAffairsManagement :> requiredCapabilites;
 		part heavyLiftLaunch:HeavyLiftLaunch :> requiredCapabilites;

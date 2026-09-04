@@ -143,7 +143,7 @@ package TechnicalComponentsPackage {
 		port csmInterfacePort : StagingPort;
 	}
 
-	part def ApolloSpacecraft :> System, Spacecraft {
+	part def ApolloSpacecraft :> ConstituentSystem, Spacecraft {
 		doc /* The complete payload stack for the Apollo mission, including the CSM, LM, SLA, and Launch Escape System. */
 		part launchEscapeSystem : ApolloLaunchEscapeSystem;
 		part commandServiceModule : ApolloCommandServiceModule;
@@ -156,7 +156,7 @@ package TechnicalComponentsPackage {
 		interface lesConnection : LESInterface connect commandServiceModule.commandModule.lesInterfacePort to launchEscapeSystem.cmInterfacePort;
 	}
 
-	part def SaturnV :> MultistageRocket, LaunchSystem {
+	part def SaturnV :> ConstituentSystem, MultistageRocket, LaunchSystem {
 		doc /* The three-stage, super heavy-lift launch vehicle used to send the Apollo spacecraft to the Moon. */
 		attribute height :> ISQ::length = 110.6 [m];
 		attribute launchMass :> ISQ::mass = 2970000 [kg];
@@ -229,7 +229,7 @@ package TechnicalComponentsPackage {
 		part :>> engines[5] = (engine1, engine2, engine3, engine4, engine5);
 	}
 
-	part def ExtravehicularMobilityUnit :> System, EVASystem {
+	part def ExtravehicularMobilityUnit :> ConstituentSystem, EVASystem {
 		doc /* The 'A7L' spacesuit, a self-contained personal spacecraft providing life support for lunar EVAs. */
 		attribute massOnEarth :> ISQ::mass = 83 [kg];
 		attribute nominalOperatingPressure :> ISQ::pressure = 25.5 ['kPa'];
