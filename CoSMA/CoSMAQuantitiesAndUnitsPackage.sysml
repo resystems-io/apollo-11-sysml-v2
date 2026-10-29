@@ -76,5 +76,5 @@ library package CoSMAQuantitiesAndUnitsPackage {
 	attribute SpecificImpulse: SpecificImpulseValue[1]; 
 	attribute specificImpulse: SpecificImpulseValue[*] nonunique :> scalarQuantities;    
 
-	calc <ln> naturalLogarithm { in x: DataValue[1]; in y: DataValue[1]; return : DataValue[1]; }
+	calc <ln> naturalLogarithm { in x: DataValue[1]; return : DataValue[1]; }
 }

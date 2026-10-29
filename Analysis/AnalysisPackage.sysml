@@ -53,7 +53,7 @@ package AnalysisPackage {
 		out overallMissionSuccess : ScalarValues::Boolean = evaluateMissionSuccess(apollo11Mission.crewReturnedSafely, apollo11Mission.softLandingAchieved, apollo11Mission.requiredSamplesReturned, apollo11Mission.instrumentsDeployed);
 		
 		assert constraint {
-			overallMissionSuccess = true;
+			overallMissionSuccess == true
 		}		
 	}	
 	
@@ -107,10 +107,10 @@ package AnalysisPackage {
 		lmas = spacecraft.lunarModule.lunarModuleAscentStage;
 
 		// Define mass stacks for each phase
-		fullStack = (sii, sivb, iu, sla, sm, cm, lm);
-		secondStageStack = (sivb, iu, sla, sm, cm, lm);
-		tliStack = (sla, sm, cm, lm);
-		spacecraftStack = (sm, cm, lm);
+		fullStack = (sii, sivb, iu, sla, sm, cm, lmds, lmas);
+		secondStageStack = (sivb, iu, sla, sm, cm, lmds, lmas);
+		tliStack = (sla, sm, cm, lmds, lmas);
+		spacecraftStack = (sm, cm, lmds, lmas);
 		
 		// Calculate delta-v capability for each stage
 		dv_stage1 = calculateLaunchStageDeltaV(sic, fullStack);

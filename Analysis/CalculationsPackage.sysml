@@ -120,7 +120,7 @@ package CalculationsPackage {
 		finalMass = stage.dryMass + payloadMass;
 		isp = stage.engines.specificImpulseVacuum;
 		
-		return deltaV :> ISQ::speed = calculateDeltaV(isp, initialMass, finalMass);
+		return deltaV :> ISQ::speed = calculateDeltaV(isp, 1 [gn], initialMass, finalMass);
 	}
 
 	calc def calculateSpacecraftBurnDeltaV {
@@ -131,7 +131,7 @@ package CalculationsPackage {
 		finalMass = spacecraft.dryMass;
 		isp = spacecraft.specificImpulse;
 		
-		return deltaV :> ISQ::speed = calculateDeltaV(isp, initialMass, finalMass);
+		return deltaV :> ISQ::speed = calculateDeltaV(isp, 1 [gn], initialMass, finalMass);
 	}
 	
 	calc def sumGrossMass {
