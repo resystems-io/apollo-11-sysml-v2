@@ -29,7 +29,21 @@ library package CoSMAQuantitiesAndUnitsPackage {
 		}
 	}
 
-	attribute <'m³⋅s⁻²'> 'metre to the power 3 second to the power minus 2' : SimpleUnit;
+	attribute def GravitationalParameterUnit :> DerivedUnit {
+		doc /* Unit for standard gravitational parameter (L^3*T^-2). */
+		private attribute lengthPF : QuantityPowerFactor[1] { :>> quantity = isq.L; :>> exponent = 3; }
+		private attribute durationPF : QuantityPowerFactor[1] { :>> quantity = isq.T; :>> exponent = -2; }
+		attribute :>> quantityDimension { :>> quantityPowerFactors = (lengthPF, durationPF); }
+	}
+
+	attribute def GravitationalParameterValue :> ScalarQuantityValue {
+		doc /* Representation of standard gravitational parameter quantity. */
+		attribute :>> mRef : GravitationalParameterUnit[1];
+	}
+
+	attribute gravitationalParameter : GravitationalParameterValue :> scalarQuantities;
+
+	attribute <'m³⋅s⁻²'> 'metre to the power 3 second to the power minus 2' : GravitationalParameterUnit = m^3 * s^-2;
 
 	attribute <kN> kilonewton : ForceUnit { :>> unitConversion: ConversionByPrefix { :>> prefix = kilo; :>> referenceUnit = N; } }
 	attribute <kPa> kilopascal : PressureUnit { :>> unitConversion: ConversionByPrefix { :>> prefix = kilo; :>> referenceUnit = Pa; } }

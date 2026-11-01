@@ -47,7 +47,7 @@ package CalculationsPackage {
 	
 	calc def calculateTliDeltaV {
 		doc /* Calculates the required Delta-V for a Hohmann-like Translunar Injection. */
-		in mu_Earth :> ISQ::force;
+		in mu_Earth :> gravitationalParameter;
 		in r_leo :> ISQ::length;
 		in r_apoapsis :> ISQ::length;
 		return deltaV :> ISQ::speed = (mu_Earth * (2/r_leo - 2/(r_leo + r_apoapsis)))^(1/2) - (mu_Earth / r_leo)^(1/2);
@@ -56,7 +56,7 @@ package CalculationsPackage {
 	calc def calculateLoiDeltaV {
 		doc /* Calculates the required braking Delta-V for Lunar Orbit Insertion from a hyperbolic approach. */
 		in v_inf :> ISQ::speed;
-		in mu_Moon :> ISQ::force;
+		in mu_Moon :> gravitationalParameter;
 		in r_periapsis :> ISQ::length;
 		return deltaV :> ISQ::speed = (v_inf^2 + 2*mu_Moon/r_periapsis)^(1/2) - (mu_Moon/r_periapsis)^(1/2);
 	}
